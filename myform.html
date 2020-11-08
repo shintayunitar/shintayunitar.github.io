@@ -1,0 +1,57 @@
+<html>
+<head>
+    <title>05211940000019 - Shinta Yunita Rahmawati</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .label {
+            float: left; 
+            width: 120px; 
+        }
+        .infobox {
+            width: 200px; 
+        }
+        .error { 
+            color: red; 
+            padding-left: 10px; 
+        }
+        .submit { 
+            margin-left: 125px; 
+            margin-top: 10px;
+        } 
+    </style> 
+</head>
+
+<body>
+    <div class = container>
+    <form id="signup" method="post" action="">
+        <div>
+            <span class="label">Masukkan NRP Mahasiswa </span>
+            <input type="text" class="infobox form-control" name="NRP"/>
+            <span class="error"> hanya boleh mengisi angka! </span>
+        </div>
+    <script>
+        $(document).ready(function() {
+            $('.error').hide(); //error disembunyikan dahulu
+            $('.submit').click(function(event){
+                var data=$('.infobox').val();
+                var len=data.length; //membaca isi textbox dicari berapa panjang karakternya dan disimpan di variabel length
+                var c;
+                for(var i=0;i<len;i++){
+                    c=data.charAt(i).charCodeAt(0);
+                    if(c <48 || c >57){
+                        $('.error').show();
+                        event.preventDefault();
+                        break;
+                    }else{
+                        $('.error').hide();
+                    }
+                }
+            });
+         }); 
+    </script>
+        <input class="submit btn btn-primary" type="submit" value="Submit">
+    </form>
+</div>
+</body> 
+</html>
