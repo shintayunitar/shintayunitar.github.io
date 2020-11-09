@@ -18,7 +18,10 @@
         .submit { 
             margin-left: 125px; 
             margin-top: 10px;
-        } 
+        }
+         body {
+  			background-color: PowderBlue;
+  		}
     </style> 
 </head>
 
@@ -26,25 +29,25 @@
     <div class = container>
     <form id="signup" method="post" action="">
         <div>
-            <span class="label">Masukkan NRP Mahasiswa </span>
+            <span class="label">Masukkan tinggi badan anda (dalam cm) </span>
             <input type="text" class="infobox form-control" name="NRP"/>
-            <span class="error"> hanya boleh mengisi angka! </span>
+            <span class="error"> maaf, hanya boleh diisi dengan angka </span>
         </div>
     <script>
         $(document).ready(function() {
             $('.error').hide(); //error disembunyikan dahulu
-            $('.submit').click(function(event){
-                var data=$('.infobox').val();
+            $('.submit').click(function(event){ //tombol submit dapat bekerja setelah diklik
+                var data=$('.infobox').val(); //membaca isi textbox dengan nama class infobox
                 var len=data.length; //membaca isi textbox dicari berapa panjang karakternya dan disimpan di variabel length
-                var c;
-                for(var i=0;i<len;i++){
-                    c=data.charAt(i).charCodeAt(0);
-                    if(c <48 || c >57){
-                        $('.error').show();
-                        event.preventDefault();
+                var c; //untuk menyimpan per karakter yang dicek
+                for(var i=0;i<len;i++){ //iterasi guna mengecek karakter di textbox
+                    c=data.charAt(i).charCodeAt(0); //membaca satu karakter ke i
+                    if(c <48 || c >57){ //nilai java keycode dimana nilai 48 sampai 57 berarti angka
+                        $('.error').show(); //error diperlihatkan
+                        event.preventDefault(); //tindakan default yang dimiliki peristiwa tersebut tidak akan terjadi
                         break;
                     }else{
-                        $('.error').hide();
+                        $('.error').hide(); //error disembunyikan dahulu
                     }
                 }
             });
